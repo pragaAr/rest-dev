@@ -41,11 +41,10 @@ $routes->set404Override();
 // routes API
 $routes->resource("cabang");
 $routes->resource("customer");
-$routes->resource("kota");
 $routes->resource("kecamatan");
+$routes->resource("kota");
 $routes->resource("provinsi");
 $routes->resource("ongkos");
-
 // end routes API
 
 /*

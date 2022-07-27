@@ -11,9 +11,11 @@ class ProvinsiModel extends Model
   protected $allowedFields = [
     'kdProv',
     'namaProv',
-    'dateProvAdd',
+    'provCreateAt',
     'userProvId'
   ];
+  protected $createdField  = 'provCreateAt';
+
   protected $validationRules = [
     'kdProv' => 'required',
     'namaProv' => 'required',

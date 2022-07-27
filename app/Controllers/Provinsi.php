@@ -27,7 +27,7 @@ class Provinsi extends BaseController
     if ($data) {
       return $this->respond($data, 200);
     } else {
-      return $this->failNotFound("Data dengan Kode $kd tidak ditemukan");
+      return $this->failNotFound("Data with Code $kd not found!");
     }
   }
 
@@ -36,7 +36,6 @@ class Provinsi extends BaseController
     $data = [
       'kdProv'        => $this->request->getVar('kdProv'),
       'namaProv'      => $this->request->getVar('namaProv'),
-      'dateProvAdd'   => date('Y-m-d H:i:s'),
       'userProvId'    => 1,
     ];
 
@@ -62,7 +61,7 @@ class Provinsi extends BaseController
     $isExist = $this->model->where('idProv', $id)->find();
 
     if (!$isExist) {
-      return $this->failNotFound("Data dengan id $id tidak ditemukan");
+      return $this->failNotFound("Data with id $id not found!");
     }
 
     if (!$this->model->save($data)) {
@@ -73,7 +72,7 @@ class Provinsi extends BaseController
       'status'    => 200,
       'error'     => null,
       'messages'  => [
-        'success' => "Data dengan id $id berhasil di update!"
+        'success' => "Data with id $id successfully updated!"
       ]
     ];
 
@@ -91,13 +90,13 @@ class Provinsi extends BaseController
         'status'    => 200,
         'error'     => null,
         'messages'  => [
-          'success' => "Data berhasil dihapus!"
+          'success' => "Data deleted successfully!"
         ]
       ];
 
       return $this->respondDeleted($response);
     } else {
-      return $this->failNotFound("Data dengan id $id tidak ditemukan");
+      return $this->failNotFound("Data with id $id not found!");
     }
   }
 }

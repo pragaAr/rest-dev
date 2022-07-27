@@ -40,6 +40,7 @@ $routes->set404Override();
 
 // routes API
 $routes->resource("provinsi");
+$routes->resource("kota");
 
 // end routes API
 

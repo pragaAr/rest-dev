@@ -49,8 +49,6 @@ class Kecamatan extends BaseController
     $data = [
       'kdKec'           => $this->request->getVar('kdKec'),
       'namaKec'         => $this->request->getVar('namaKec'),
-      'luarJangkauan'   => $this->request->getVar('luarJangkauan'),
-      'oljKec'          => $this->request->getVar('oljKec'),
       'userKecId'       => 1,
     ];
 

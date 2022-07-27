@@ -12,18 +12,14 @@ class KecModel extends Model
     'kdKec',
     'namaKec',
     'kdKota',
-    'luarJangkauan',
-    'oljKec',
     'kecCreateAt',
     'userKecId'
   ];
   protected $createdField  = 'kecCreateAt';
   protected $validationRules = [
-    'kdKec' => 'required',
+    'kdKec'   => 'required',
     'namaKec' => 'required',
-    'kdKota' => 'required',
-    'luarJangkauan' => 'required',
-    'oljKec' => 'required',
+    'kdKota'  => 'required',
   ];
   protected $validationMessages = [
     'kdKec' => [
@@ -34,12 +30,6 @@ class KecModel extends Model
     ],
     'kdKota' => [
       'required' => 'Kode Kota harus diisi!'
-    ],
-    'luarJangkauan' => [
-      'required' => 'Luar Jangkauan harus diisi!'
-    ],
-    'oljKec' => [
-      'required' => 'OLJ harus diisi!'
-    ],
+    ]
   ];
 }

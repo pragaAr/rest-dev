@@ -3,20 +3,20 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
-use App\Models\OngkosModel;
+use App\Models\UserModel;
 
-class Ongkos extends BaseController
+class User extends BaseController
 {
   use ResponseTrait;
 
   function __construct()
   {
-    $this->model = new OngkosModel();
+    $this->model = new UserModel();
   }
 
   public function index()
   {
-    $data = $this->model->orderBy('idOngkos', 'asc')->findAll();
+    $data = $this->model->orderBy('idUser', 'asc')->findAll();
 
     $response = [
       'status'    => 200,
@@ -35,7 +35,7 @@ class Ongkos extends BaseController
 
   public function show($id = null)
   {
-    $data = $this->model->where('idOngkos', $id)->find();
+    $data = $this->model->where('idUser', $id)->find();
 
     if ($data) {
       return $this->respond($data, 200);
@@ -47,12 +47,11 @@ class Ongkos extends BaseController
   public function create()
   {
     $data = [
-      'kdKotaAsal'     => $this->request->getVar('kdKotaAsal'),
-      'kdKotaTujuan'   => $this->request->getVar('kdKotaTujuan'),
-      'ongkosMin'      => $this->request->getVar('ongkosMin'),
-      'ongkosMin'      => $this->request->getVar('ongkosMin'),
-      'ongkosVolume'   => $this->request->getVar('ongkosVolume'),
-      'userOngkosId'   => 1,
+      'namaUser'      => $this->request->getVar('namaUser'),
+      'notelpUser'    => $this->request->getVar('notelpUser'),
+      'emailUser'     => $this->request->getVar('emailUser'),
+      'passUser'      => $this->request->getVar('passUser'),
+      'userRole'      => $this->request->getVar('userRole'),
     ];
 
     if (!$this->model->save($data)) {
@@ -72,9 +71,9 @@ class Ongkos extends BaseController
   {
     $data = $this->request->getRawInput();
 
-    $data['idOngkos'] = $id;
+    $data['idUser'] = $id;
 
-    $isExist = $this->model->where('idOngkos', $id)->find();
+    $isExist = $this->model->where('idUser', $id)->find();
 
     if (!$isExist) {
       return $this->failNotFound("Data with id $id not found!");
@@ -97,7 +96,7 @@ class Ongkos extends BaseController
 
   public function delete($id = null)
   {
-    $data = $this->model->where('idOngkos', $id)->find();
+    $data = $this->model->where('idUser', $id)->find();
 
     if ($data) {
       $this->model->delete($id);

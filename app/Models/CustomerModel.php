@@ -10,7 +10,7 @@ class CustomerModel extends Model
   protected $primaryKey = "idCust";
   protected $allowedFields = [
     'namaCust',
-    'kdCabang',
+    'kdKota',
     'alamatCust',
     'notelpCust',
     'jenisCust',
@@ -20,7 +20,7 @@ class CustomerModel extends Model
   protected $createdField  = 'custCreateAt';
   protected $validationRules = [
     'namaCust'    => 'required',
-    'kdCabang'    => 'required',
+    'kdKota'    => 'required',
     'alamatCust'  => 'required',
     'notelpCust'  => 'required',
     'jenisCust'   => 'required',
@@ -29,7 +29,7 @@ class CustomerModel extends Model
     'namaCust' => [
       'required' => 'Nama Customer harus diisi!'
     ],
-    'kdCabang' => [
+    'kdKota' => [
       'required' => 'Kode Cabang harus diisi!'
     ],
     'alamatCust' => [

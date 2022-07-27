@@ -48,7 +48,7 @@ class Customer extends BaseController
   {
     $data = [
       'namaCust'      => $this->request->getVar('namaCust'),
-      'kdCabang'      => $this->request->getVar('kdCabang'),
+      'kdKota'        => $this->request->getVar('kdKota'),
       'alamatCust'    => $this->request->getVar('alamatCust'),
       'notelpCust'    => $this->request->getVar('notelpCust'),
       'jenisCust'     => $this->request->getVar('jenisCust'),

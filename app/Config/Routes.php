@@ -39,8 +39,12 @@ $routes->set404Override();
 // $routes->get('/', 'Home::index');
 
 // routes API
-$routes->resource("provinsi");
+$routes->resource("cabang");
+$routes->resource("customer");
 $routes->resource("kota");
+$routes->resource("kecamatan");
+$routes->resource("provinsi");
+$routes->resource("ongkos");
 
 // end routes API
 

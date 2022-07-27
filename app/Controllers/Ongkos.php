@@ -3,20 +3,20 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
-use App\Models\KotaModel;
+use App\Models\OngkosModel;
 
-class Kota extends BaseController
+class Ongkos extends BaseController
 {
   use ResponseTrait;
 
   function __construct()
   {
-    $this->model = new KotaModel();
+    $this->model = new OngkosModel();
   }
 
   public function index()
   {
-    $data = $this->model->orderBy('kdKota', 'asc')->findAll();
+    $data = $this->model->orderBy('idOngkos', 'asc')->findAll();
 
     $response = [
       'status'    => 200,
@@ -33,24 +33,26 @@ class Kota extends BaseController
     }
   }
 
-  public function show($kd = null)
+  public function show($id = null)
   {
-    $data = $this->model->where('kdKota', $kd)->find();
+    $data = $this->model->where('idOngkos', $id)->find();
 
     if ($data) {
       return $this->respond($data, 200);
     } else {
-      return $this->failNotFound("Data with Code $kd not found!");
+      return $this->failNotFound("Data with id $id not found!");
     }
   }
 
   public function create()
   {
     $data = [
-      'kdKota'        => $this->request->getVar('kdKota'),
-      'namaKota'      => $this->request->getVar('namaKota'),
-      'provKota'      => $this->request->getVar('provKota'),
-      'userKotaId'    => 1,
+      'kdKotaAsal'     => $this->request->getVar('kdKotaAsal'),
+      'kdKotaTujuan'   => $this->request->getVar('kdKotaTujuan'),
+      'ongkosMin'      => $this->request->getVar('ongkosMin'),
+      'ongkosMin'      => $this->request->getVar('ongkosMin'),
+      'ongkosVolume'   => $this->request->getVar('ongkosVolume'),
+      'userOngkosId'   => 1,
     ];
 
     if (!$this->model->save($data)) {
@@ -70,9 +72,9 @@ class Kota extends BaseController
   {
     $data = $this->request->getRawInput();
 
-    $data['idKota'] = $id;
+    $data['idOngkos'] = $id;
 
-    $isExist = $this->model->where('idKota', $id)->find();
+    $isExist = $this->model->where('idOngkos', $id)->find();
 
     if (!$isExist) {
       return $this->failNotFound("Data with id $id not found!");
@@ -95,7 +97,7 @@ class Kota extends BaseController
 
   public function delete($id = null)
   {
-    $data = $this->model->where('idKota', $id)->find();
+    $data = $this->model->where('idOngkos', $id)->find();
 
     if ($data) {
       $this->model->delete($id);

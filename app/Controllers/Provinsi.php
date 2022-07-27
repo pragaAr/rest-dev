@@ -17,7 +17,20 @@ class Provinsi extends BaseController
   public function index()
   {
     $data = $this->model->orderBy('kdProv', 'asc')->findAll();
-    return $this->respond($data, 200);
+
+    $response = [
+      'status'    => 200,
+      'error'     => null,
+      'messages'  => [
+        'success' => "No data in database.."
+      ]
+    ];
+
+    if (!empty($data)) {
+      return $this->respond($data, 200);
+    } else {
+      return $this->respond($response);
+    }
   }
 
   public function show($kd = null)
